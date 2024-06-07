@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<center>
+<body>
+    <form action="/form" method="post" enctype="multipart/form-data">
+        <label for="user"> Name</label>
+        <input type="text" name="name" placeholder="Enter name"><br>
+        <label for="clas"> Class</label>
+        <input type="number" name="clas" placeholder="Enter class"><br>
+        <label for="email"> Email</label>
+        <input type="email" name="email" placeholder="Enter email"><br>
+        <label for="rollno">Roll No.</label>
+        <input type="number" name="rollno" placeholder="Enter Roll"><br>
+        <label for="image">Profile Picture</label>
+        <input type="file" name="image" placeholder="choose file">        
+        <button type="submit">submit</button>
+    </form>  
+    <% if(locals.user) {%>
+        <img src="/images/uploads/<%= user.picture%>">  
+        <%}else{%>
+            <p>no image</p>
+<% }%>
+    
+</body>
+</center>
+</html>
