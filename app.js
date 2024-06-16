@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const app = express();
 const User=require("./models/user_data.js");
@@ -27,7 +28,7 @@ const upload = multer({ storage: storage })
   
 
 
-app.get('/form',(req,res) =>{
+app.get('/',(req,res) =>{
     res.render("form");
 });
 
@@ -38,16 +39,12 @@ app.get('/find',(req,res) =>{
 app.post('/form', upload.single('image'),async (req,res) => {
     
     console.log(req.file);
-    let {name,clas,email,rollno} = req.body;
+    let {rollno} = req.body;
     const user= await User.create({
-        name,
-        clas,
-        email,
         rollno,
         picture: req.file.filename
     });
     const response = await user.save();
-    // console.log(response);
     res.render("form",{user});
 });
 
